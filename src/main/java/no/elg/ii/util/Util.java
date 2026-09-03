@@ -47,7 +47,9 @@ public final class Util {
       } else {
         quantity = Integer.parseInt(substring);
       }
-      assert quantity > 0;
+      if (quantity <= 0) {
+        return NO_MENU_OPTION_NUMBER;
+      }
       return quantity;
     } catch (NumberFormatException | IndexOutOfBoundsException e) {
       return NO_MENU_OPTION_NUMBER;

@@ -51,4 +51,29 @@ public class UtilTest {
   public void allButOneWithQuantityZeroReturnsNoMenuOptionNumber() {
     assertEquals(Util.NO_MENU_OPTION_NUMBER, Util.getNumberFromMenuOption("Withdraw-All-but-1", widgetWithQuantity(0)));
   }
+
+  @Test
+  public void allButOneWithQuantityTwoReturnsOne() {
+    assertEquals(1, Util.getNumberFromMenuOption("Withdraw-All-but-1", widgetWithQuantity(2)));
+  }
+
+  @Test
+  public void allReturnsMaxValue() {
+    assertEquals(Integer.MAX_VALUE, Util.getNumberFromMenuOption("Withdraw-All", widgetWithQuantity(1)));
+  }
+
+  @Test
+  public void plainNumberIsParsed() {
+    assertEquals(5, Util.getNumberFromMenuOption("Withdraw-5", widgetWithQuantity(1)));
+  }
+
+  @Test
+  public void garbageIsNoMenuOptionNumber() {
+    assertEquals(Util.NO_MENU_OPTION_NUMBER, Util.getNumberFromMenuOption("Withdraw-abc", widgetWithQuantity(1)));
+  }
+
+  @Test
+  public void missingHyphenIsNoMenuOptionNumber() {
+    assertEquals(Util.NO_MENU_OPTION_NUMBER, Util.getNumberFromMenuOption("Withdraw", widgetWithQuantity(1)));
+  }
 }
